@@ -25,9 +25,7 @@ static PF_Err Render(PF_InData *in_data, PF_OutData *out_data, PF_ParamDef *para
     
     unsigned int *dst = (unsigned int *)output->data;
     int dstRow = output->rowbytes>>2;
-    
-    bool fill = false;
-    
+        
     PF_LayerDef *input = &params[Params::INPUT]->u.ld;
     if(input->width==width&&input->height==height)  {
         
@@ -49,10 +47,6 @@ static PF_Err Render(PF_InData *in_data, PF_OutData *out_data, PF_ParamDef *para
         }
     }
     else {
-        fill = true;
-    }
-    
-    if(fill) {
         for(int i=0; i<height; i++) {
             for(int j=0; j<width; j++) {
                 dst[i*dstRow+j] = 0xFF0000FF;
